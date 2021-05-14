@@ -9,8 +9,11 @@
     "start": "node src/server.js",
     "predeploy": "npm audit",
     "deploy": "git push heroku master",
-    "migrate": "postgrator --config postgrator-config.js",
-    "migrate:production": "heroku run npm run migrate"
+    "migrate:production": "npm run knex migrate:latest",
+    "knex": "knex",
+    "migrate": "knex migrate:latest",
+    "reset": "npm run rollback && npm run migrate && npm run seed",
+    "rollback": "knex migrate:rollback"
   },
   
   "keywords": [],
