@@ -17,7 +17,7 @@ app.use(cors());
 app.use(morgan(morganOption));
 app.use(helmet());
 app.use(express.json());
-
+app.options('*', cors())
 app.use('/household', householdRouter)
 app.use('/members', membersRouter)
 app.use('/chores', choresRouter)
