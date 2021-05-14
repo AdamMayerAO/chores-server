@@ -8,14 +8,14 @@ const app = express()
 const choresRouter = require('./chores-router')
 const membersRouter = require('./members-router')
 const householdRouter = require('./household-router')
-
 const morganOption = (NODE_ENV === 'production')
   ? 'tiny'
   : 'common';
 
-app.use(morgan(morganOption))
-app.use(helmet())
-app.use(cors())
+
+app.use(cors());
+app.use(morgan(morganOption));
+app.use(helmet());
 app.use(express.json());
 
 app.use('/household', householdRouter)
