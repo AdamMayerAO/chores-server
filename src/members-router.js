@@ -14,6 +14,7 @@ const serializeMember = member => ({
   points: member.points
 })
 
+
 membersRouter
   .route('/:id')
   .get( (req, res, next) => {
