@@ -28,24 +28,24 @@ householdRouter
                 return res.status(405).json({
                     message: `Household with this email already exists!`
                 })
+                } else { 
+                    householdService.addNewHousehold(req.app.get('db'), {householdName, email, password})
+                    .then(household => {
+                    if (!household) {
+                        return res.status(405).json({
+                            message: `An error occurred while registering household!`
+                        })
+                    } else {
+                        return res.status(201).json({
+                            household: household,
+                            message: `Household registered successfully!`
+                        });
+                    }
+                })
+
                 }
             })
-            .catch(next)
-        householdService.addNewHousehold(req.app.get('db'), {householdName, email, password})
-            .then(household => {
-                console.log("\nAdd New household Response: ", household, "\n");
-                if (!household) {
-                    return res.status(405).json({
-                        message: `An error occurred while registering household!`
-                    })
-                } else {
-                    return res.status(201).json({
-                        household: household,
-                        message: `Household registered successfully!`
-                    });
-                }
-            })
-            .catch(next)
+        .catch(next)
     })
 householdRouter
     .route('/login')
