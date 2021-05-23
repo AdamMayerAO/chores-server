@@ -6,16 +6,16 @@ const jsonParser = express.json()
 const membersService = require('./members-service')
 
 const serializeHousehold = household => ({
-  id: household.id,
-//  householdName: xss(household.householdName),
-//  prize: xss(household.prize),
-//  email: xss(household.email),
-//  password: xss(household.password),
+    id: household.id,
+    householdName: xss(household.householdName),
+    prize: xss(household.prize),
+    email: xss(household.email),
+    password: xss(household.password),
 
-  householdName: household.householdName,
-  //prize: xss(household.prize),
-  email: household.email,
-  password: household.password,
+//   householdName: household.householdName,
+//   prize: xss(household.prize),
+//   email: household.email,
+//   password: household.password,
 })
 
 householdRouter
